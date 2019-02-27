@@ -1,25 +1,10 @@
 import React, { Component } from 'react';
-import { BookCard } from './BookCard';
+import { BookCard } from '../shared/BookCard';
 import { SearchBox } from './SearchBox';
-
-export const pStyle = {
-    color: 'limegreen',
-    backgroundColor:'purple',
-    textAlign : 'center',
-    // width : '50%',
-    lineHeight: '100px'
-};
 
 const divStyle = {    
     margin : '40px',
     border : '5px solid violet'
-};
-
-export const sbStyle = { 
-    // color: 'limegreen',
-    // fontFamily: 'Comic Sans',
-    // backgroundColor: 'purple'
-    border :'3px solid darkred'
 };
 
 /**

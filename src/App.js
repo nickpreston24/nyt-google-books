@@ -1,17 +1,23 @@
 import React, { Component } from 'react';
 import './App.css';
-import Search from './components/pages/BookSearch';
-import Saved from './components/pages/SavedBooks';
+import Search from './components/BookSearch';
+import Saved from './components/SavedBooks';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <h1>Google Books Search</h1>
-        <h2>Save books for later!</h2>
-        <Search/>
-        <Saved/>
-      </div>
+        <Router>
+            <div className="App">
+                <h1>Google Books Search</h1>
+                <h2>Save books for later!</h2>
+                <Switch>
+                    <Route exact path="/" component={Search}/>
+                    <Route exact path="/Saved" component={Saved}/>                    
+                    {/* <Route component={NoMatch}/> */}
+                </Switch>
+            </div>
+        </Router>
     );
   }
 }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-class Books extends Component {
+
+class View extends Component {
     state = {};
     componentDidMount() { this.loadBooks(); }
     loadBooks = () => {
