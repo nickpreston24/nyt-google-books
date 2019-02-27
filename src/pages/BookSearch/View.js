@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class View extends Component {
+export default class View extends Component {
     state = {};
     componentDidMount() { this.loadBooks(); }
     loadBooks = () => {

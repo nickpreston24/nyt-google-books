@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
-import Search from './components/BookSearch';
-import Saved from './components/SavedBooks';
+import Search from './pages/BookSearch';
+import Saved from './pages/SavedBooks';
+import NoMatch from './pages/NoMatch';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 class App extends Component {
@@ -14,7 +15,7 @@ class App extends Component {
                 <Switch>
                     <Route exact path="/" component={Search}/>
                     <Route exact path="/Saved" component={Saved}/>                    
-                    {/* <Route component={NoMatch}/> */}
+                    <Route component={NoMatch}/>
                 </Switch>
             </div>
         </Router>

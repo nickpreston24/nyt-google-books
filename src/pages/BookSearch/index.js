@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { BookCard } from '../shared/BookCard';
+import { BookCard } from '../../components/shared/BookCard';
 import { SearchBox } from './SearchBox';
 
-const divStyle = {    
+const divStyle = {
     margin : '40px',
     border : '5px solid violet'
 };
