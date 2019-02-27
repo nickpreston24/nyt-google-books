@@ -39,7 +39,6 @@ export class SearchBox extends Component {
                         <h3>Enter a word or phrase:</h3>                
                         <input style={inputStyle}  defaultValue={initialQuery}
                             placeholder='Find your book!' type="text" name="query" />
-                        {/* <Button/> */}
                         <button style={buttonStyle} type="submit">Search</button>
                     </div>
                 </form>

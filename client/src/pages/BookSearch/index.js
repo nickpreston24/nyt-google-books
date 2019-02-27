@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BookCard } from '../../components/shared/BookCard';
+import { BookCard } from '../shared/BookCard';
 import { SearchBox } from './SearchBox';
 
 const divStyle = {
