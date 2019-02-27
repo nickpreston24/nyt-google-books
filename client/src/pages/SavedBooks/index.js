@@ -12,6 +12,13 @@ const divStyle = {
     border: '5px solid pink'
 };
 
+/**
+ * TODO:
+ * 1) Render all saved books.
+ * 2) [View] takes user to GB book.
+ * 3) [Delete] btn removes from db.
+ */
+
 export class Saved extends Component {
   render() {
     return (

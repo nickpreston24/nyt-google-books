@@ -9,7 +9,11 @@ const divStyle = {
 
 /**
  * TODO 
- * Maintain the state of the Search Page ONLY (SRP)
+ * 1) Search books via Google Books API
+ * 2) Render each book.
+ *  2a) [View] button to browse on GB.
+ *  2b) [Save] button to save info to db.
+ * (optional) Maintain the state of the Search Page ONLY (SRP)
  */
 
 export class Search extends Component {
