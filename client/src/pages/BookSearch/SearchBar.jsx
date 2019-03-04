@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import SubmitButton from '../Register/SubmitButton'
+import SubmitButton from './SubmitButton'
 
 export default class SearchBar extends Component {
 
@@ -21,7 +21,7 @@ export default class SearchBar extends Component {
         if (initialQuery)
             onSearch(initialQuery)
     }
-    
+
     render() {
         const {initialQuery} = this.props;
         return (
@@ -33,7 +33,7 @@ export default class SearchBar extends Component {
                             value={this.props.filterText}
                             defaultValue={initialQuery}
                             style={inputStyle} 
-                            placeholder='Find your Pro!' type="text" name="query" />
+                            placeholder='Find your book!' type="text" name="query" />
                             {' '}
                             <SubmitButton value={"Search"}></SubmitButton>
                         {/* <button style={buttonStyle} type="submit">Search</button> */}

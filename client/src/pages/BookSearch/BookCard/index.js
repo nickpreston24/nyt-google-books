@@ -3,12 +3,12 @@ import './style.css';
 
 export default function BookCard(props) {
     
-    let {name, authors, synopsis} = props;
-    
+    let {id, name, authors, synopsis, removeBook} = props;
+    // console.log('card -> id: ', id)
     return (
         <div className="card">
         <div className="img-container">            
-            <img alt={name} src={'image'}/>
+            {props.img && <img alt={name} src={'image'}/>}
         </div>
         <div className="content">
             <ul>
