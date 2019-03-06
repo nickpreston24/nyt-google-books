@@ -1,9 +1,12 @@
 import React from 'react';
 import './style.css';
 
-export default function BookCard({id, removeBook, ...props}) {    
-    let synopsis = props.searchInfo.textSnippet;
-    let {title, authors} = props.volumeInfo;
+export default function BookCard({
+    id, removeBook, viewBook, volumeInfo: {title, authors}, ...props}, 
+    // searchInfo, searchInfo: { textSnippet: {synopsis} }
+) 
+    {    
+    let synopsis = props.searchInfo.textSnippet;    
     // console.log('synopsis: ', synopsis, 'authors', authors, 'title', title)
     return (
         <div className="card">
@@ -19,9 +22,16 @@ export default function BookCard({id, removeBook, ...props}) {
         </div>
 
         {/* TODO: find a better button than this... */}
-        <span onClick={_ => removeBook(id)} className="remove">
+        {/* <span onClick={_ => removeBook(id)} className="remove">
             𝘅
-        </span>
+        </span> */}
+        {removeBook && <button 
+            onClick={_=>removeBook(id)} 
+            className="remove">Remove</button>}
+        {viewBook && <button 
+            onClick={_=>viewBook(id)}
+            className="view">View</button>}
+            
         </div>
     )
 }

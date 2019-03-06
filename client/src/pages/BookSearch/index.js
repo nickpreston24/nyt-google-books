@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
-import BookCard from './BookCard'
 import SearchBar from './SearchBar'
-import BookList from './BookList'
+import BooksView from './BooksView'
 import search from  '../../utils/googleBooks'
 import './style.css';
 import { Link } from  'react-router-dom'
@@ -17,7 +16,7 @@ export default class BookSearch extends Component {
         keyName: "author"        
     }
 
-    componentDidMount(){}
+    componentDidMount() {}
     
     onSearch = text => {
         text = text.trim().replace(/\s+/g, "+");
@@ -42,24 +41,7 @@ export default class BookSearch extends Component {
                 <h1>Books Search</h1>                
                 <Link to="/Saved">Get Saved Books</Link>
                 <SearchBar onSearch={this.onSearch}></SearchBar>
-                <BookList>
-                    <h3>Books found:</h3>                        
-                    {/* {console.log('books state: ', this.state.books)} */}
-                    {this.state.books
-                        .map(book => {
-                            {/* console.log("book guts: ", book); */}
-                            let {id} = book;
-                            {/* console.log('id: ', id);  */}
-                            return(
-                            <BookCard                                     
-                                key={id}
-                                id={id}
-                                {...book} 
-                                removeBook={this.removeBook} 
-                                />)
-                        })
-                    }
-                </BookList>
+                <BooksView books={this.state.books}></BooksView>
             </div>
         )
     }
