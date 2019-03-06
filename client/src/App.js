@@ -17,7 +17,8 @@ class App extends Component {
                     <Route
                         component={Search} RenderLoading={SpinLoad}
                         exact path="/" initialQuery="" />
-                    <Route exact path="/Saved" component={Saved}/>                    
+                    <Route path="/Search" component={Search}/>
+                    <Route path="/Saved" component={Saved}/>
                     <Route component={NoMatch}/>
                 </Switch>
             </div>

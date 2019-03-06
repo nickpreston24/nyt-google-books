@@ -1,19 +1,19 @@
 import React from 'react';
 import './style.css';
 
-export default function BookCard(props) {
-    
-    let {id, name, authors, synopsis, removeBook} = props;
-    // console.log('card -> id: ', id)
+export default function BookCard({id, removeBook, ...props}) {    
+    let synopsis = props.searchInfo.textSnippet;
+    let {title, authors} = props.volumeInfo;
+    // console.log('synopsis: ', synopsis, 'authors', authors, 'title', title)
     return (
         <div className="card">
         <div className="img-container">            
-            {props.img && <img alt={name} src={'image'}/>}
+            {props.img && <img alt={title} src={'image'}/>}
         </div>
         <div className="content">
             <ul>
-                {name && <li><strong>{name}</strong></li>}
-                {authors && <li><strong>by:</strong> {authors.join(" ")}</li>}
+                {title && <li><strong>{title}</strong></li>}
+                {authors && <li><strong>by:</strong> {authors.join(", ").trim()}</li>}
                 {synopsis && <li><strong>Synopsis:</strong> {synopsis}</li>}                
             </ul>
         </div>

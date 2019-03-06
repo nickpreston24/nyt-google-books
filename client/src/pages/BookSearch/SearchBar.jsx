@@ -23,20 +23,20 @@ export default class SearchBar extends Component {
     }
 
     render() {
-        const {initialQuery} = this.props;
+        const {initialQuery, filterText} = this.props;
         return (
             <section>
                 <form onSubmit={this.onSubmit}>
                     <div>
                         <h3>Enter a word or phrase:</h3>                
                         <input 
-                            value={this.props.filterText}
+                            value={filterText}
                             defaultValue={initialQuery}
                             style={inputStyle} 
                             placeholder='Find your book!' type="text" name="query" />
                             {' '}
-                            <SubmitButton value={"Search"}></SubmitButton>
-                        {/* <button style={buttonStyle} type="submit">Search</button> */}
+                            {/* <SubmitButton value={"Search"}></SubmitButton> */}
+                        <button style={buttonStyle} type="submit">Search</button>
                     </div>
                 </form>
             </section>
@@ -45,4 +45,4 @@ export default class SearchBar extends Component {
 }
 
 const inputStyle = { border :'3px solid #f54646'};
-// const buttonStyle = { margin: '10px' }
+const buttonStyle = { margin: '10px' }
