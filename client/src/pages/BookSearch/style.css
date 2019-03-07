@@ -3,12 +3,9 @@
     width: 960px;
     position: relative;
     margin: 0 auto;
-
+    
     /*Like, but don't know if they buy anything*/
-    align-content: center;
-    align-items: center;
-}
-
-.wrapper {
-    /* width: 100%; */
+    /* float: clear; */
+    /* align-content: center;
+    align-items: center; */
 }

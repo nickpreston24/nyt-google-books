@@ -1,18 +1,8 @@
 import React, { Component } from 'react';
 import API  from '../../utils/API'
 import {Link} from 'react-router-dom'
-
-const pStyle = {    
-    color : 'orange',
-    backgroundColor : 'blue',
-    margin : '15px',
-    textAlign: 'center'    
-};
-
-const divStyle = {
-    margin: '40px',
-    border: '5px solid pink'
-};
+import './style.css'
+import BooksView from '../components/BooksView';
 
 /**
  * TODO: (pseudocode)
@@ -24,18 +14,15 @@ const divStyle = {
 export default class Saved extends Component {
 
     state = {
-        searchText: ""
+        searchText: "",
+        books: []
     }
 
     componentDidMount(){
         this.loadBooks();
     }
 
-    viewBook = id => {
-        // Pseudocode:
-        // 1. use request module to send the user to the book's URL on Google.
-        // This will take the user to a new tab in their browser.
-    }
+    
 
     loadBooks = () => {
         API.getBooks()
@@ -44,31 +31,38 @@ export default class Saved extends Component {
             title: "", 
             author: "", 
             synopsis: ""}))
-        // .then(res=>console.log(res))
+        // .then(res=>console.log(res.data))
+        .then(console.log('books loaded: ', this.state.books))
         .catch(err => console.log(err));
     }    
 
-    removeBook = id => {
-        console.log('before: ', this.state.books, 'id: ', id);
-        const remaining = this.state.books.filter(book=>book._id!==id);
-        console.log('remaining: ', remaining)
-        this.setState({books: remaining});
+    // removeBook = id => {
+    //     console.log('before: ', this.state.books, 'id: ', id);
+    //     const remaining = this.state.books.filter(book => book._id !== id);
+    //     console.log('remaining: ', remaining)
+    //     this.setState({books: remaining});
 
-        this.deleteBook(id);
-    }
+    //     this.deleteBook(id);
+    // }
 
     //TODO: (psuedocode) Run this on the id of a book whose [Delete] btn was clicked.
-    deleteBook = id => {
-        API.deleteBook(id)
-        .then(res => this.loadBooks())
-        .catch(err => console.log(err));
-    };    
+    // deleteBook = id => {
+    //     API.deleteBook(id)
+    //     .then(res => this.loadBooks())
+    //     .catch(err => console.log(err));
+    // };    
 
   render() {
     return (
-      <div style={divStyle}>
-        <Link to="/Search">Search for Books</Link>
-        <p style={pStyle}>Saved</p>
+        <div>
+            {console.log('books to render: ', this.state.books)}
+            <Link to="/Search">Search for Books</Link>
+            {this.state.books.count > 0 && <h1>Books Saved</h1>}
+            {/* {console.log('viewbook func', this.viewBook)} */}
+            <BooksView 
+                books={this.state.books}                
+                // {...this.saveBook && this.viewBook}
+                ></BooksView>
       </div>
     )
   }

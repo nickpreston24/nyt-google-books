@@ -1,0 +1,11 @@
+p {    
+    color : 'orange';
+    background-color : 'blue';
+    margin : '15px';
+    text-align: 'center'
+};
+
+div {
+    margin: '40px';
+    border: '5px solid pink';
+};
