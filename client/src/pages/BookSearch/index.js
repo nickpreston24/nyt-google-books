@@ -48,22 +48,26 @@ export default class BookSearch extends Component {
         win.focus();
     }
 
-    saveBook = book => {
-        
-        console.log('saving: ', book)
+    saveBook = book => {        
+        // console.log('saving: ', book) 
+        API.saveBook(this.map(book))
+            .then(res => console.log(res))
+            .catch(err => console.log(err));
+    }
+
+    map (book) {
         var {id, volumeInfo: {title, authors, description, imageLinks, previewLink}} = book;        
         let image = imageLinks.thumbnail;
         let link = previewLink;
+
         // console.log('img: ', image)
         // let description = book.volumeInfo.description;
         // console.log('description: ', description)
         // console.log('image links: ', book.searchInfo.)
+        // console.log('mapped: ', mappedBook)
+
         const mappedBook = {id, title, authors, description, image, link}
-        console.log('mapped: ', mappedBook)
-                
-        API.saveBook(mappedBook)
-            .then(res=>console.log(res))
-            .catch(err=>console.log(err));
+        return mappedBook; 
     }
 
     render() {

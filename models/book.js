@@ -4,15 +4,19 @@ const Schema = mongoose.Schema;
 const bookSchema = new Schema({
     title: {
         type: String,
-        required: true
+        required: true,
+        unique: true,
+        dropDups: true
+    },
+    link: {
+        type: String,
+        required: false,
+        unique: true,
+        dropDups: true
     },
     authors: {
         type: Array,
         required: true
-    },
-    link: {
-        type: String,
-        required: false
     },
     description: String,
     image: String,

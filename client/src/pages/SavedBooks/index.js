@@ -20,9 +20,7 @@ export default class Saved extends Component {
 
     componentDidMount(){
         this.loadBooks();
-    }
-
-    
+    }   
 
     loadBooks = () => {
         API.getBooks()
@@ -30,40 +28,39 @@ export default class Saved extends Component {
             books: res.data, 
             title: "", 
             author: "", 
-            synopsis: ""}))
-        // .then(res=>console.log(res.data))
+            synopsis: ""}))        
         .then(console.log('books loaded: ', this.state.books))
         .catch(err => console.log(err));
     }    
 
-    // removeBook = id => {
-    //     console.log('before: ', this.state.books, 'id: ', id);
-    //     const remaining = this.state.books.filter(book => book._id !== id);
-    //     console.log('remaining: ', remaining)
-    //     this.setState({books: remaining});
+    removeBook = id => {
+        // console.log('deleting book...' + id)
 
-    //     this.deleteBook(id);
-    // }
+        // if(!id) return;
+        // console.log('before: ', this.state.books, 'id: ', id);
+        const remaining = this.state.books.filter(book => book._id !== id);
+        // console.log('remaining: ', remaining)
+        this.setState({books: remaining});
+        this.deleteBook(id);
+    }
+    
+    deleteBook = id => {
+        console.log('deleting book...' + id)
+        if(!id) return;
+        API.deleteBook(id)
+        .then(res => this.loadBooks())
+        .catch(err => console.log(err));
+    };    
 
-    //TODO: (psuedocode) Run this on the id of a book whose [Delete] btn was clicked.
-    // deleteBook = id => {
-    //     API.deleteBook(id)
-    //     .then(res => this.loadBooks())
-    //     .catch(err => console.log(err));
-    // };    
-
-  render() {
-    return (
-        <div>
-            {console.log('books to render: ', this.state.books)}
-            <Link to="/Search">Search for Books</Link>
-            {this.state.books.count > 0 && <h1>Books Saved</h1>}
-            {/* {console.log('viewbook func', this.viewBook)} */}
-            <BooksView 
-                books={this.state.books}                
-                // {...this.saveBook && this.viewBook}
-                ></BooksView>
-      </div>
-    )
-  }
+    render() {
+        return (
+            <div>
+                {/* {console.log('books to render: ', this.state.books)} */}
+                <Link to="/Search">Search for Books</Link>
+                {this.state.books.count > 0 && <h1>Books Saved</h1>}
+                {/* {console.log('viewbook func', this.viewBook)} */}
+                <BooksView removeBook={this.removeBook} books={this.state.books}></BooksView>
+        </div>
+        )
+    }
 }
